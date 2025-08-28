@@ -12,7 +12,10 @@ class baseballGame {
     
     // 랜덤 숫자 생성
     static func computerNumber() -> [Int] {
-        let shuffledNumbers = Array(1...9).shuffled()
+        var shuffledNumbers = Array(0...9).shuffled()
+        while shuffledNumbers[0] == 0 {
+            shuffledNumbers = shuffledNumbers.shuffled()
+        }
         return Array(shuffledNumbers.prefix(3))
     }
     
@@ -44,7 +47,7 @@ class baseballGame {
             }
             
             // 입력값에 0 포함 or 중복 숫자일 경우
-            if userNumbers.contains(0) || Set(userNumbers).count != 3 {
+            if Set(userNumbers).count != 3 {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
