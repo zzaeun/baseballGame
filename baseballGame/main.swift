@@ -1,7 +1,5 @@
 import Foundation
 
-print("< 게임을 시작합니다 >")
-
 class baseballGame {
     private let answer: [Int]
     
@@ -9,6 +7,28 @@ class baseballGame {
         // func computerNumber에서 만든 3자리 숫자를 answer에 저장
         self.answer = baseballGame.computerNumber()
     }
+    
+    func instruction() {
+        while true {
+        print("환영합니다! 원하시는 번호를 입력해주세요")
+        print("1. 게임 시작하기  2. 게임 기록 보기. 3. 종료하기")
+        
+        let instructionInput = readLine() ?? ""
+        
+            switch instructionInput {
+            case "1":
+                print("\n< 게임을 시작합니다 >")
+                start()
+            case "2":
+                print("게임 기록 보기 기능은 아직입니다.\n")
+            case "3":
+                print("게임 종료\n")
+            default:
+                print("잘못된 숫자입니다. 1, 2, 3 중 하나를 입력해주세요!\n")
+            }
+        }
+    }
+        
     
     // 랜덤 숫자 생성
     static func computerNumber() -> [Int] {
@@ -51,10 +71,10 @@ class baseballGame {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
-    
-        return userNumbers
+            
+            return userNumbers
+        }
     }
-}
     
     // 스트라이크, 볼 판정
     private func checkResult(userNumbers: [Int]) -> Bool {
@@ -75,7 +95,7 @@ class baseballGame {
         
         // 스트라이크, 볼, nothing 출력
         if strike == 3 {
-            print("정답입니다!")
+            print("정답입니다!\n")
             return true
         } else if strike == 0 && ball == 0 {
             print("Nothing\n")
@@ -98,4 +118,4 @@ class baseballGame {
 }
 
 let game = baseballGame()
-game.start()
+game.instruction()
