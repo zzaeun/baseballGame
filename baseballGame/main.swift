@@ -2,7 +2,9 @@ import Foundation
 
 class baseballGame {
     private let answer: [Int]
+    private var gameRecords: [Int] = []
     
+    private var tryCount = 0
     init() {
         // func computerNumber에서 만든 3자리 숫자를 answer에 저장
         self.answer = baseballGame.computerNumber()
@@ -14,7 +16,6 @@ class baseballGame {
         print("1. 게임 시작하기  2. 게임 기록 보기. 3. 종료하기")
         
         let instructionInput = readLine() ?? ""
-        
             switch instructionInput {
             case "1":
                 print("\n< 게임을 시작합니다 >")
@@ -65,9 +66,8 @@ class baseballGame {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
-            
-            // 입력값에 0 포함 or 중복 숫자일 경우
-            if Set(userNumbers).count != 3 {
+            // 중복 숫자일 경우
+             else if Set(userNumbers).count != 3 {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
@@ -107,14 +107,24 @@ class baseballGame {
     
     // 게임 실행
     func start() {
+        self.tryCount = 0
+        
         while true {
             let userNumbers = input()
+            tryCount += 1
+
             if checkResult(userNumbers: userNumbers) {
                 break
             }
             
         }
     }
+    
+    // 2. 게임 기록 보기
+//    func record(userNumbers: [Int]) -> Int {
+//        print("시도 횟수 - \(userNumbers)")
+//        var tryCount = input(userNumbers).count
+//    }
 }
 
 let game = baseballGame()
