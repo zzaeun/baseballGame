@@ -21,7 +21,7 @@ class baseballGame {
                 print("\n< 게임을 시작합니다 >")
                 start()
             case "2":
-                print("게임 기록 보기 기능은 아직입니다.\n")
+                print("시도 횟수 - \(tryCount)\n")
             case "3":
                 print("게임 종료\n")
             default:
@@ -119,12 +119,6 @@ class baseballGame {
             
         }
     }
-    
-    // 2. 게임 기록 보기
-//    func record(userNumbers: [Int]) -> Int {
-//        print("시도 횟수 - \(userNumbers)")
-//        var tryCount = input(userNumbers).count
-//    }
 }
 
 let game = baseballGame()
