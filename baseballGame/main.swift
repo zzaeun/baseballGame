@@ -5,6 +5,8 @@ class baseballGame {
     private var gameRecords: [Int] = []
     
     private var tryCount = 0
+    private var startGame = 0
+    
     init() {
         // func computerNumber에서 만든 3자리 숫자를 answer에 저장
         self.answer = baseballGame.computerNumber()
@@ -21,7 +23,7 @@ class baseballGame {
                 print("\n< 게임을 시작합니다 >")
                 start()
             case "2":
-                print("시도 횟수 - \(tryCount)\n")
+                print("\(startGame)번째 게임 : 시도 횟수 - \(tryCount)\n")
             case "3":
                 print("게임 종료\n")
             default:
@@ -108,7 +110,7 @@ class baseballGame {
     // 게임 실행
     func start() {
         self.tryCount = 0
-        
+        self.startGame += 1
         while true {
             let userNumbers = input()
             tryCount += 1
