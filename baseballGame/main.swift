@@ -14,16 +14,16 @@ class baseballGame {
     
     func instruction() {
         while true {
-        print("환영합니다! 원하시는 번호를 입력해주세요")
-        print("1. 게임 시작하기  2. 게임 기록 보기. 3. 종료하기")
-        
-        let instructionInput = readLine() ?? ""
+            print("환영합니다! 원하시는 번호를 입력해주세요")
+            print("1. 게임 시작하기  2. 게임 기록 보기. 3. 종료하기")
+            
+            let instructionInput = readLine() ?? ""
             switch instructionInput {
             case "1":
                 print("\n< 게임을 시작합니다 >")
                 start()
             case "2":
-                print("\(startGame)번째 게임 : 시도 횟수 - \(tryCount)\n")
+                showRecord()
             case "3":
                 print("게임 종료\n")
             default:
@@ -31,7 +31,7 @@ class baseballGame {
             }
         }
     }
-        
+    
     
     // 랜덤 숫자 생성
     static func computerNumber() -> [Int] {
@@ -69,7 +69,7 @@ class baseballGame {
                 continue
             }
             // 중복 숫자일 경우
-             else if Set(userNumbers).count != 3 {
+            else if Set(userNumbers).count != 3 {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
@@ -114,11 +114,21 @@ class baseballGame {
         while true {
             let userNumbers = input()
             tryCount += 1
-
+            
             if checkResult(userNumbers: userNumbers) {
+                gameRecords.append(tryCount)
                 break
             }
             
+        }
+    }
+    
+    // 게임 시작 및 시도 횟수 기록 저장
+    func showRecord() {
+        if gameRecords.isEmpty {
+            print("아직 게임 기록이 없습니다.\n")
+        } else {
+            print("\(startGame)번째 게임 : 시도 횟수 - \(tryCount)\n")
         }
     }
 }
