@@ -2,7 +2,7 @@ import Foundation
 
 class baseballGame {
     private let answer: [Int]
-    private var gameRecords: [Int] = []
+    private var gameRecords: [(startGame: Int, tryCount: Int)] = []
     
     private var tryCount = 0
     private var startGame = 0
@@ -31,8 +31,7 @@ class baseballGame {
             }
         }
     }
-    
-    
+   
     // 랜덤 숫자 생성
     static func computerNumber() -> [Int] {
         var shuffledNumbers = Array(0...9).shuffled()
@@ -116,7 +115,7 @@ class baseballGame {
             tryCount += 1
             
             if checkResult(userNumbers: userNumbers) {
-                gameRecords.append(tryCount)
+                gameRecords.append((startGame: startGame, tryCount: tryCount))
                 break
             }
             
@@ -128,7 +127,10 @@ class baseballGame {
         if gameRecords.isEmpty {
             print("아직 게임 기록이 없습니다.\n")
         } else {
-            print("\(startGame)번째 게임 : 시도 횟수 - \(tryCount)\n")
+            for record in gameRecords {
+                print("< 게임 기록 보기 >")
+                print("\(record.startGame)번째 게임 : 시도 횟수 - \(record.tryCount)\n")
+            }
         }
     }
 }
